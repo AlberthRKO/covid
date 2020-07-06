@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgcovid"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="413dp"
+        android:layout_height="80dp"
+        android:src="@drawable/arriba"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="413dp"
+        android:layout_height="105dp"
+        android:src="@drawable/abajo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logaso"
+        android:layout_width="89dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/logaso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="302dp"
+        android:layout_height="223dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/covid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="190dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/kaushan_script"
+        android:text="COVID QR"
+        android:textAlignment="center"
+        android:textColor="#1A1A1A"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="280dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Escanea un QR para saber que personas con covid hay a tu alrededor"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
