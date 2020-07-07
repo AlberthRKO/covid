@@ -57,7 +57,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 />
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawablePadding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -71,30 +72,33 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:drawableStart="@drawable/pass"
+                android:drawablePadding="16dp"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/iniciar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/round"
             android:fontFamily="@font/poppins"
-            android:onClick="loginUser"
+            android:onClick="contenido"
             android:text="Iniciar Sesión"
             android:textColor="@color/title_color" />
 
         <Button
+            android:id="@+id/registrar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/round2"
-            android:text="Registrarse"
-            android:textColor="@color/title_color"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins"
             android:layout_marginTop="10dp"
-            android:id="@+id/iniciar"/>
+            android:background="@drawable/round2"
+            android:fontFamily="@font/poppins"
+            android:text="Registrarse"
+            android:textColor="@color/title_color" />
 
 
 

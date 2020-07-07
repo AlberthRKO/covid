@@ -2,21 +2,23 @@ package com.example.covid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
 
 //    Button iniciar;
 //    TextInputLayout user,pass;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        onAndrea();
     }
 
 //    private  Boolean validacionUser(){
@@ -43,4 +45,27 @@ public class Login extends AppCompatActivity {
 //            return;
 //        }
 //    }
+
+    public void onAndrea() {
+
+        Button entry = (Button) findViewById(R.id.registrar);
+
+        entry.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://covid-qr.netlify.app/registro.html");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void contenido(View view){
+
+        Intent intent = new Intent(Login.this,qr.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
