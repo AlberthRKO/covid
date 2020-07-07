@@ -1,238 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".qr"
-    android:orientation="vertical"
-    android:background="@drawable/bgcovid">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:padding="10dp"
-        android:background="@drawable/bgcontenido">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logaso"
-            android:layout_centerVertical="true"/>
-
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="COVID QR"
-            android:textStyle="bold"
-            android:textColor="@color/title_color"
-            android:textSize="25sp"
-            android:fontFamily="@font/kaushan_script"
-            android:layout_toRightOf="@id/logo"
-            android:layout_centerVertical="true"
-            android:includeFontPadding="false"
-            android:layout_marginLeft="-20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alberth Paredes"
-            android:textColor="@color/title_color"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
-            android:layout_toRightOf="@id/logo"
-            android:layout_below="@id/nombre"
-            android:layout_marginLeft="-20dp"/>
-
-    </RelativeLayout>
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/poppins"
-        android:text="Estado Covid Bolivia"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:lineHeight="25dp" />
-
+    android:background="@drawable/bgcovid"
+    tools:context=".qr">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginTop="-20dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@drawable/bgcontenido"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/logaso" />
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-20dp"
+                android:layout_toRightOf="@id/logo"
+                android:fontFamily="@font/kaushan_script"
+                android:includeFontPadding="false"
+                android:text="COVID QR"
+                android:textColor="@color/title_color"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nombre"
+                android:layout_marginLeft="-20dp"
+                android:layout_toRightOf="@id/logo"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="Alberth Paredes"
+                android:textColor="@color/title_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="Estado Covid Bolivia"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            app:lineHeight="25dp" />
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"
-            app:cardElevation="10dp"
-            android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:padding="10dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/infected"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/Nconfirmados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="39297"
-                    android:includeFontPadding="false"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="20sp"
-                    android:layout_centerInParent="true"/>
-                <TextView
-                    android:id="@+id/confirmados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Confirmados"
-                    android:textColor="@color/cardview_dark_background"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="12sp"
-                    android:layout_below="@id/Nconfirmados"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:includeFontPadding="false"/>
-            </RelativeLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardElevation="10dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"
-            app:cardElevation="10dp"
-            android:layout_margin="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/recuperados"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/Nrecuperados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11667"
-                    android:includeFontPadding="false"
-                    android:textStyle="bold"
-                    android:textColor="#28A745"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="20sp"
-                    android:layout_centerInParent="true"/>
-                <TextView
-                    android:id="@+id/recuperados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recuperados"
-                    android:textColor="@color/cardview_dark_background"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="12sp"
-                    android:layout_below="@id/Nrecuperados"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:includeFontPadding="false"/>
-            </RelativeLayout>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/infected" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/Nconfirmados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="39297"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_weight="1"
-            app:cardElevation="10dp"
-            android:layout_margin="5dp">
+                    <TextView
+                        android:id="@+id/confirmados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Nconfirmados"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="Confirmados"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="12sp" />
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/deaths"
-                    android:layout_centerHorizontal="true"/>
-                <TextView
-                    android:id="@+id/Nmuertos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1434"
-                    android:includeFontPadding="false"
-                    android:textStyle="bold"
-                    android:textColor="#DC3545"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="20sp"
-                    android:layout_centerInParent="true"/>
-                <TextView
-                    android:id="@+id/muertos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Muertos"
-                    android:textColor="@color/cardview_dark_background"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="12sp"
-                    android:layout_below="@id/Nmuertos"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:includeFontPadding="false"/>
-            </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardElevation="10dp">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/recuperados" />
+
+                    <TextView
+                        android:id="@+id/Nrecuperados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="11667"
+                        android:textColor="#28A745"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/recuperados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Nrecuperados"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="Recuperados"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/deaths" />
+
+                    <TextView
+                        android:id="@+id/Nmuertos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="1434"
+                        android:textColor="#DC3545"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/muertos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Nmuertos"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="Muertos"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins"
+            android:text="Escanea un QR por tu zona"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:lineHeight="25dp" />
+
+        <Button
+            android:id="@+id/scanear"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-5dp"
+            android:background="@drawable/round"
+            android:fontFamily="@font/poppins"
+            android:text="Escanear QR"
+            android:textColor="@color/title_color" />
+
+        <TextView
+            android:id="@+id/respuesta"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoLink="web"
+            android:paddingTop="5dp"
+            android:text="Estado Covid"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/buscarQR"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round2"
+            android:fontFamily="@font/poppins"
+            android:text="Ubicaciones QR"
+            android:textColor="@color/title_color" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/poppins"
-        android:text="Escanea un QR por tu zona"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        app:lineHeight="25dp" />
 
-    <Button
-        android:id="@+id/scanear"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round"
-        android:fontFamily="@font/poppins"
-        android:text="Escanear QR"
-        android:textColor="@color/title_color" />
-
-    <Button
-        android:id="@+id/buscarQR"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round2"
-        android:fontFamily="@font/poppins"
-        android:text="Ubicaciones QR"
-        android:textColor="@color/title_color" />
-
-
-</LinearLayout>
+</ScrollView>
