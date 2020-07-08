@@ -52,9 +52,10 @@
             android:layout_height="match_parent"
             android:id="@+id/user"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Usuario">
+            android:hint="Carnet de Identidad">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtBoxCi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_person_black_24dp"
@@ -70,6 +71,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtBoxContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/pass"
@@ -78,7 +80,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/iniciar"
+            android:id="@+id/btnIniciar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
