@@ -24,7 +24,6 @@ public class qr extends AppCompatActivity {
         setContentView(R.layout.activity_qr);
 
         btnScanner = findViewById(R.id.scanear);
-        resp = findViewById(R.id.respuesta);
 
         btnScanner.setOnClickListener(mOnclickListener);
 
