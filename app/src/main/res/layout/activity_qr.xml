@@ -27,8 +27,8 @@
 
             <TextView
                 android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="33dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="-20dp"
                 android:layout_toRightOf="@id/logo"
@@ -237,15 +237,6 @@
             android:text="Escanear QR"
             android:textColor="@color/title_color" />
 
-        <TextView
-            android:id="@+id/respuesta"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:autoLink="web"
-            android:paddingTop="5dp"
-            android:text="Estado Covid"
-            android:textAlignment="center" />
 
         <Button
             android:id="@+id/buscarQR"
