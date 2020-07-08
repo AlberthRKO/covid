@@ -38,6 +38,7 @@ public class qr extends AppCompatActivity {
 //        Validamos que no este vacio
         if (result !=null){
             if (result.getContents()!= null){
+
 //                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //                builder.setTitle("Estado de Covid");
 //                builder.setMessage(result.getContents());
