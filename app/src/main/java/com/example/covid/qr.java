@@ -44,7 +44,10 @@ public class qr extends AppCompatActivity {
 //                builder.setMessage(result.getContents());
 //                AlertDialog alertDialog = builder.create();
 //                alertDialog.show();
-                resp.setText("Estado Covid :\n"+result.getContents());
+//                resp.setText("Estado Covid :\n"+result.getContents());
+                Intent intent = new Intent(qr.this,contenido.class);
+                intent.putExtra("Estado", result.getContents());
+                startActivity(intent);
             }else {
                 resp.setText("Error al escanear el QR");
             }
