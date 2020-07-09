@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,18 +31,32 @@ public class Login extends AppCompatActivity {
     EditText ci;
     EditText contrasena;
     Button btnIniciar;
+    String extension;
+    Spinner extensiones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        extensiones = findViewById(R.id.extension);
         ci = (EditText) findViewById(R.id.txtBoxCi);
         contrasena = (EditText) findViewById(R.id.txtBoxContrasena);
         btnIniciar = (Button)findViewById(R.id.btnIniciar);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Login.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.extensiones));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        extensiones.setAdapter(myAdapter);
+
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validarUsuario("http://192.168.1.2:8080/covid-qr/php/controlador/ControladorUsuario.php");
+                String carnet = "ci: " + ci.getText().toString()+extensiones.getSelectedItem().toString();
+                String urlHosting = "http://covid-qr.tk/php/controlador/ControladorUsuario.php";
+                String urlLocal = "http://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
+                validarUsuario(urlHosting);
             }
         });
 
@@ -69,7 +85,7 @@ public class Login extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String, String>();
                 parametros.put("request","getByCiContrasena");
-                parametros.put("ci", ci.getText().toString()+"CH.");
+                parametros.put("ci", ci.getText().toString()+extensiones.getSelectedItem().toString());
                 parametros.put("contrasena",contrasena.getText().toString());
                 return parametros;
             }
@@ -111,7 +127,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://covid-qr.netlify.app/registro.html");
+                Uri uri = Uri.parse("http://covid-qr.tk/registro.html");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

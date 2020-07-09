@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">CovidQR</string>
     <string name="register">Registrate</string>
+
+    <string-array name="extensiones">
+        <item>CH.</item>
+        <item>TJ.</item>
+        <item>PD.</item>
+        <item>SC.</item>
+        <item>LP.</item>
+        <item>OR.</item>
+        <item>CB.</item>
+        <item>PO.</item>
+        <item>BE.</item>
+    </string-array>
+
 </resources>
