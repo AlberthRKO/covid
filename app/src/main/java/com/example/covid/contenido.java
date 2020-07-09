@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +29,19 @@ public class contenido extends AppCompatActivity {
     TextView dato;
     Button ubicacion;
     TextView titulo;
+    ImageView confir, recu, muer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contenido);
         recibirQr();
+        confir = (ImageView) findViewById(R.id.conf);
+        recu = (ImageView) findViewById(R.id.rec);
+        muer = (ImageView) findViewById(R.id.mue);
+        rotarImagen(confir);
+        rotarImagen(recu);
+        rotarImagen(muer);
 
     }
 
@@ -98,6 +108,17 @@ public class contenido extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    private void rotarImagen(View view){
+        RotateAnimation animation = new RotateAnimation(0, 360,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+
+        animation.setDuration(10000);
+        animation.setRepeatCount(Animation.INFINITE);
+//        animation.setRepeatMode(Animation.REVERSE);
+        view.startAnimation(animation);
     }
 
 }

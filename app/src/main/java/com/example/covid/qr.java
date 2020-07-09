@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ public class qr extends AppCompatActivity {
 
     Button btnScanner;
     TextView resp;
+    ImageView confir, recup, muer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,13 @@ public class qr extends AppCompatActivity {
         btnScanner = findViewById(R.id.scanear);
 
         btnScanner.setOnClickListener(mOnclickListener);
+
+        confir = (ImageView) findViewById(R.id.conf);
+        recup= (ImageView) findViewById(R.id.rec);
+        muer = (ImageView) findViewById(R.id.mue);
+        rotarImagen(confir);
+        rotarImagen(recup);
+        rotarImagen(muer);
 
     }
 
@@ -71,4 +82,14 @@ public class qr extends AppCompatActivity {
             }
         }
     };
+
+    private void rotarImagen(View view){
+        RotateAnimation animation = new RotateAnimation(0, 360,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+
+        animation.setDuration(10000);
+        animation.setRepeatCount(Animation.INFINITE);
+        view.startAnimation(animation);
+    }
 }
