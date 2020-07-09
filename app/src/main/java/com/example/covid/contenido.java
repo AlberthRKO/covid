@@ -76,7 +76,7 @@ public class contenido extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("OK"))
-                    Toast.makeText(getApplicationContext(),"DATOS AÑADIDOS EXITOSAMENTE",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"QR REGISTRADO EXITOSAMENTE",Toast.LENGTH_LONG).show();
                 else
                     Toast.makeText(getApplicationContext(),"HUBO UN ERROR, VUELVA A ESCANEAR",Toast.LENGTH_LONG).show();
             }

@@ -226,7 +226,7 @@ tools:context=".contenido">
         android:textColor="@color/colorPrimary"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:lineHeight="25dp" />
+        app:lineHeight="30dp" />
 
     <TextView
         android:id="@+id/datoQR"
