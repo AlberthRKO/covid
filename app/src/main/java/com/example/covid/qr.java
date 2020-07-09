@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -45,8 +46,12 @@ public class qr extends AppCompatActivity {
 //                AlertDialog alertDialog = builder.create();
 //                alertDialog.show();
 //                resp.setText("Estado Covid :\n"+result.getContents());
+                Bundle get = getIntent().getExtras();
+        //        recibimos el dato
+                String idUsuario = get.getString("idUsuario");
                 Intent intent = new Intent(qr.this,contenido.class);
-                intent.putExtra("Estado", result.getContents());
+                intent.putExtra("CodigoQR", result.getContents());
+                intent.putExtra("idUsuario", idUsuario);
                 startActivity(intent);
             }else {
                 resp.setText("Error al escanear el QR");

@@ -31,7 +31,6 @@ public class Login extends AppCompatActivity {
     EditText ci;
     EditText contrasena;
     Button btnIniciar;
-    String extension;
     Spinner extensiones;
 
     @Override
@@ -53,9 +52,9 @@ public class Login extends AppCompatActivity {
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String carnet = "ci: " + ci.getText().toString()+extensiones.getSelectedItem().toString();
                 String urlHosting = "http://covid-qr.tk/php/controlador/ControladorUsuario.php";
-                String urlLocal = "http://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
+                String urlEmuladorLocal = "http://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
+                String urlLocal = "http://192.168.1.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
                 validarUsuario(urlHosting);
             }
         });
@@ -72,6 +71,8 @@ public class Login extends AppCompatActivity {
                 }
                 else{
                     Intent intent = new Intent(getApplicationContext(),qr.class);
+                    String[] parts = response.split(":");
+                    intent.putExtra("idUsuario", "" + parts[1].charAt(0));
                     startActivity(intent);
                 }
             }
