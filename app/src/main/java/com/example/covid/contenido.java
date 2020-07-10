@@ -61,8 +61,8 @@ public class contenido extends AppCompatActivity {
         String estado = parts[2];
         String ejeX = parts[3];
         String ejeY = parts[4];
-        String servidor = "http://covid-qr.tk/php/controlador/ControladorUbicacionUsuario.php";
-        String servidorLocal = "http://192.168.1.2:8080/covid-qr/php/controlador/ControladorUbicacionUsuario.php";
+        String servidor = "https://covid-qr.tk/php/controlador/ControladorUbicacionUsuario.php";
+        String servidorLocal = "https://192.168.1.2:8080/covid-qr/php/controlador/ControladorUbicacionUsuario.php";
         insertarUbicacionUsuario(servidor,idUbicacion,idUsuario);
 
         final String ubicar = "https://www.google.com/maps/@" + ejeX + "," + ejeY +",18z";

@@ -44,7 +44,7 @@ public class qr extends AppCompatActivity {
 //    funcion de la camara que obtendremos el codigo
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
 //        Capturamos el codigo
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 //        Validamos que no este vacio
@@ -65,8 +65,10 @@ public class qr extends AppCompatActivity {
                 intent.putExtra("idUsuario", idUsuario);
                 startActivity(intent);
             }else {
-                resp.setText("Error al escanear el QR");
+                Toast.makeText(qr.this,"Cancelaste el Escaneo", Toast.LENGTH_LONG).show();
             }
+        }else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -77,7 +79,15 @@ public class qr extends AppCompatActivity {
             switch (v.getId()){
                 case  R.id.scanear:
 //                    Mandamos a llamar a la camara
-                    new IntentIntegrator(qr.this).initiateScan();
+                    IntentIntegrator integrator = new IntentIntegrator(qr.this);
+                    integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                    integrator.setPrompt("Escanea un QR de COVID");
+                    integrator.setCameraId(0);
+                    integrator.setOrientationLocked(false);
+                    integrator.setBeepEnabled(false);
+                    integrator.setCaptureActivity(CaptureActivityPortrait.class);
+                    integrator.setBarcodeImageEnabled(false);
+                    integrator.initiateScan();
                     break;
             }
         }

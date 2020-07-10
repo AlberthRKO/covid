@@ -52,9 +52,9 @@ public class Login extends AppCompatActivity {
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlHosting = "http://covid-qr.tk/php/controlador/ControladorUsuario.php";
-                String urlEmuladorLocal = "http://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
-                String urlLocal = "http://192.168.1.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
+                String urlHosting = "https://covid-qr.tk/php/controlador/ControladorUsuario.php";
+                String urlEmuladorLocal = "https://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
+                String urlLocal = "https://192.168.1.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
                 validarUsuario(urlHosting);
             }
         });
@@ -128,7 +128,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("http://covid-qr.tk/registro.html");
+                Uri uri = Uri.parse("https://covid-qr.tk/registro.html");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
