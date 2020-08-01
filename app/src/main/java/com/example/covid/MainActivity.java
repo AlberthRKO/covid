@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  static  int Screen = 5000;
+    private  static  int Screen = 3500;
 
     //Variables
     Animation topAnim, bottomAnim;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
@@ -251,9 +251,43 @@ tools:context=".contenido">
         android:layout_marginBottom="10dp"
         android:background="@drawable/round2"
         android:fontFamily="@font/poppins"
-        android:text="Ubicaciones Activos"
+        android:text="Trayectoria Activos"
         android:textColor="@color/title_color" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/btnWeb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/round"
+            android:fontFamily="@font/poppins"
+            android:onClick="contenido"
+            android:text="Ver pagina web"
+            android:textColor="@color/title_color" />
+
+        <Button
+            android:id="@+id/ubiQR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round2"
+            android:fontFamily="@font/poppins"
+            android:text="Ubicaciones QR"
+            android:textColor="@color/title_color" />
+
+    </LinearLayout>
 </LinearLayout>
 
 
-</ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

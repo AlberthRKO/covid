@@ -27,7 +27,7 @@ import java.util.Map;
 public class contenido extends AppCompatActivity {
 
     TextView dato;
-    Button ubicacion;
+    Button ubicacion,web,ubiQR;
     TextView titulo;
     ImageView confir, recu, muer;
 
@@ -42,6 +42,21 @@ public class contenido extends AppCompatActivity {
         rotarImagen(confir);
         rotarImagen(recu);
         rotarImagen(muer);
+
+        web = findViewById(R.id.btnWeb);
+        ubiQR = findViewById(R.id.ubiQR);
+
+
+        final String link = "https://covid-qr.tk";
+        web.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -7,44 +7,46 @@
     android:background="@drawable/bgcovid"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="413dp"
-        android:layout_height="80dp"
-        android:src="@drawable/arriba"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="413dp"
-        android:layout_height="105dp"
-        android:src="@drawable/abajo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_wavefinal"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorAccent"/>
+
+
 
     <ImageView
         android:id="@+id/logaso"
         android:layout_width="89dp"
         android:layout_height="93dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/logaso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="302dp"
+        android:layout_width="250dp"
         android:layout_height="223dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="50dp"
         android:src="@drawable/covid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +54,7 @@
         android:id="@+id/textView"
         android:layout_width="190dp"
         android:layout_height="49dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="84dp"
         android:fontFamily="@font/kaushan_script"
         android:text="COVID QR"
         android:textAlignment="center"
@@ -68,7 +70,7 @@
         android:id="@+id/textView2"
         android:layout_width="280dp"
         android:layout_height="98dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/poppins"
         android:text="Escanea un QR para saber que personas con covid hay a tu alrededor"
         android:textAlignment="center"
