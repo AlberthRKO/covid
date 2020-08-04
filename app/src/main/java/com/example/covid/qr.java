@@ -19,7 +19,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class qr extends AppCompatActivity {
 
-    Button btnScanner;
+    Button btnScanner, btnUbiQr;
     TextView resp;
     ImageView confir, recup, muer;
 
@@ -29,6 +29,8 @@ public class qr extends AppCompatActivity {
         setContentView(R.layout.activity_qr);
 
         btnScanner = findViewById(R.id.scanear);
+        btnUbiQr = findViewById(R.id.ubicacionQR);
+
 
         btnScanner.setOnClickListener(mOnclickListener);
 
@@ -38,6 +40,14 @@ public class qr extends AppCompatActivity {
         rotarImagen(confir);
         rotarImagen(recup);
         rotarImagen(muer);
+
+        btnUbiQr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(qr.this,MapaQR.class);
+                startActivity(i);
+            }
+        });
 
     }
 
