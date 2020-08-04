@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,8 +72,9 @@ public class Login extends AppCompatActivity {
                 }
                 else{
                     Intent intent = new Intent(getApplicationContext(),qr.class);
-                    String[] parts = response.split(":");
-                    intent.putExtra("idUsuario", "" + parts[1].charAt(0));
+                    Gson gson = new Gson();
+                    Usuario usuario = gson.fromJson(response, Usuario.class);
+                    intent.putExtra("idUsuario", "" + usuario.getIdUsuario());
                     startActivity(intent);
                 }
             }

@@ -10,6 +10,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class MapaQR extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -30,17 +35,19 @@ public class MapaQR extends AppCompatActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
         gMap.setMapType(gMap.MAP_TYPE_NORMAL);
+        Bundle get = getIntent().getExtras();
+        String ubicaciones = get.getString("ubicaciones");
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<Ubicacion>>(){}.getType();
+        List<Ubicacion> ubicacionList = gson.fromJson(ubicaciones, listType);
+        for(Ubicacion ubicacion: ubicacionList) {
+            LatLng ubi = new LatLng(Float.parseFloat(ubicacion.getEjeX()), Float.parseFloat(ubicacion.getEjeY()));
+            gMap.addMarker(new MarkerOptions().position(ubi)
+                    .title(ubicacion.getNombre()));
+        }
         LatLng sydney = new LatLng(-19.0384737, -65.2563851);
-        LatLng sydney2 = new LatLng(-19.039738956997944, -65.25693297738495);
-        LatLng sydney3 = new LatLng(-19.046389552262934, -65.26603362908325);
-        gMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Alberth"));
-        gMap.addMarker(new MarkerOptions().position(sydney2)
-                .title("Facultad de Tecnologia"));
-        gMap.addMarker(new MarkerOptions().position(sydney3)
-                .title("Facultad de Medicina"));
         gMap.getUiSettings().setZoomControlsEnabled(true);
-        gMap.setMinZoomPreference(15f);
+        gMap.setMinZoomPreference(13f);
         gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

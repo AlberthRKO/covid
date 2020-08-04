@@ -14,8 +14,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class qr extends AppCompatActivity {
 
@@ -44,11 +58,43 @@ public class qr extends AppCompatActivity {
         btnUbiQr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(qr.this,MapaQR.class);
-                startActivity(i);
+                String urlHosting = "https://covid-qr.tk/php/controlador/ControladorUbicacion.php";
+                setUbicaciones(urlHosting);
+
             }
         });
 
+    }
+
+    private void setUbicaciones(String url){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("empty")){
+                    Toast.makeText(getApplicationContext(),"UBICACIONES VACIAS",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Intent i = new Intent(qr.this,MapaQR.class);
+                    i.putExtra("ubicaciones",response);
+                    startActivity(i);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("request","getTodasUbicaciones");
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 //    funcion de la camara que obtendremos el codigo
