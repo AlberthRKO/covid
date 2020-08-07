@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -33,7 +34,7 @@ import java.util.Map;
 
 public class qr extends AppCompatActivity {
 
-    Button btnScanner, btnUbiQr;
+    Button btnScanner, btnUbiQr,paginaWeb;
     TextView resp;
     ImageView confir, recup, muer;
 
@@ -44,6 +45,19 @@ public class qr extends AppCompatActivity {
 
         btnScanner = findViewById(R.id.scanear);
         btnUbiQr = findViewById(R.id.ubicacionQR);
+        paginaWeb = findViewById(R.id.pagina);
+
+
+        final String link = "https://covid-qr.tk";
+        paginaWeb.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
 
         btnScanner.setOnClickListener(mOnclickListener);
