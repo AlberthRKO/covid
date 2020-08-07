@@ -390,6 +390,7 @@
                             android:textSize="10dp" />
 
                         <Button
+                            android:id="@+id/ubiHospitales"
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_gravity="center"
@@ -530,6 +531,7 @@
                             android:textSize="10dp" />
 
                         <Button
+                            android:id="@+id/listaQR"
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_gravity="center"
@@ -538,7 +540,7 @@
                             android:layout_marginRight="20dp"
                             android:background="@drawable/round"
                             android:fontFamily="@font/poppins"
-                            android:text="listar qr"
+                            android:text="listado qr"
                             android:textColor="@color/title_color" />
 
                     </LinearLayout>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class Login extends AppCompatActivity {
     EditText contrasena;
     Button btnIniciar;
     Spinner extensiones;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class Login extends AppCompatActivity {
         ci = (EditText) findViewById(R.id.txtBoxCi);
         contrasena = (EditText) findViewById(R.id.txtBoxContrasena);
         btnIniciar = (Button)findViewById(R.id.btnIniciar);
+        progressBar = findViewById(R.id.progreso);
+
+        progressBar.setVisibility(View.INVISIBLE);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Login.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.extensiones));
@@ -57,6 +62,7 @@ public class Login extends AppCompatActivity {
                 String urlEmuladorLocal = "https://10.0.0.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
                 String urlLocal = "https://192.168.1.2:8080/covid-qr/php/controlador/ControladorUsuario.php";
                 validarUsuario(urlHosting);
+
             }
         });
 
@@ -64,11 +70,15 @@ public class Login extends AppCompatActivity {
         onAndrea();
     }
     private void validarUsuario(String url){
+
+        progressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response.equals("empty")){
                     Toast.makeText(getApplicationContext(),"C.I. O CONTRASEÑA INCORRECTOS",Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
                 else{
                     Intent intent = new Intent(getApplicationContext(),qr.class);
@@ -91,7 +101,9 @@ public class Login extends AppCompatActivity {
                 parametros.put("ci", ci.getText().toString()+extensiones.getSelectedItem().toString());
                 parametros.put("contrasena",contrasena.getText().toString());
                 return parametros;
+
             }
+
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);

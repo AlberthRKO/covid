@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class qr extends AppCompatActivity {
 
-    Button btnScanner, btnUbiQr,paginaWeb;
+    Button btnScanner, btnUbiQr,paginaWeb, listarQR, btnUbiHospitales;
     TextView resp;
     ImageView confir, recup, muer;
 
@@ -46,6 +46,24 @@ public class qr extends AppCompatActivity {
         btnScanner = findViewById(R.id.scanear);
         btnUbiQr = findViewById(R.id.ubicacionQR);
         paginaWeb = findViewById(R.id.pagina);
+        listarQR = findViewById(R.id.listaQR);
+        btnUbiHospitales = findViewById(R.id.ubiHospitales);
+
+        listarQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(qr.this,listaQr.class);
+                startActivity(i);
+            }
+        });
+
+        btnUbiHospitales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(qr.this,mapaHospitales.class);
+                startActivity(i);
+            }
+        });
 
 
         final String link = "https://covid-qr.tk";
