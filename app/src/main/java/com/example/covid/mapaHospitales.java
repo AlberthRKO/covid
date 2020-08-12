@@ -17,6 +17,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
@@ -53,7 +55,9 @@ public class mapaHospitales extends AppCompatActivity implements OnMapReadyCallb
         List<Hospital> hospitalList = gson.fromJson(hospitales, listType);
         for(Hospital hospital: hospitalList) {
             LatLng ubi = new LatLng(Float.parseFloat(hospital.getEjeX()), Float.parseFloat(hospital.getEjeY()));
-            gMap.addMarker(new MarkerOptions().position(ubi)
+            gMap.addMarker(new MarkerOptions()
+                    .position(ubi)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacionhospital))
                     .title(hospital.getNombre()));
         }
         LatLng sydney = new LatLng(-19.0384737, -65.2563851);

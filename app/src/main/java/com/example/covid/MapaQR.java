@@ -8,6 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
@@ -43,6 +44,8 @@ public class MapaQR extends AppCompatActivity implements OnMapReadyCallback {
         for(Ubicacion ubicacion: ubicacionList) {
             LatLng ubi = new LatLng(Float.parseFloat(ubicacion.getEjeX()), Float.parseFloat(ubicacion.getEjeY()));
             gMap.addMarker(new MarkerOptions().position(ubi)
+                    .position(ubi)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacionqr))
                     .title(ubicacion.getNombre()));
         }
         LatLng sydney = new LatLng(-19.0384737, -65.2563851);
