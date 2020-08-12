@@ -60,8 +60,8 @@ public class qr extends AppCompatActivity {
         btnUbiHospitales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(qr.this,mapaHospitales.class);
-                startActivity(i);
+                String urlHosting = "https://covid-qr.tk/php/controlador/ControladorHospital.php";
+                setHospitales(urlHosting);
             }
         });
 
@@ -92,7 +92,6 @@ public class qr extends AppCompatActivity {
             public void onClick(View view) {
                 String urlHosting = "https://covid-qr.tk/php/controlador/ControladorUbicacion.php";
                 setUbicaciones(urlHosting);
-
             }
         });
 
@@ -121,6 +120,38 @@ public class qr extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String, String>();
                 parametros.put("request","getTodasUbicaciones");
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void setHospitales(String url){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("empty")){
+                    Toast.makeText(getApplicationContext(),"HOSPITALES VACIOS",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Intent i = new Intent(qr.this,mapaHospitales.class);
+                    i.putExtra("hospitales", response);
+                    startActivity(i);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("request","getTodosHospitales");
                 return parametros;
             }
         };
