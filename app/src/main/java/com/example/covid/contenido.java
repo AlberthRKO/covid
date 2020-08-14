@@ -53,21 +53,19 @@ public class contenido extends AppCompatActivity {
 //        jalamos los datos del activiti anterior
         Bundle datoQR = getIntent().getExtras();
 //        recibimos el dato
-        String qr = datoQR.getString("CodigoQR");
-        String idUsuario = datoQR.getString("idUsuario");
         dato = findViewById(R.id.datoQR);
         titulo = findViewById(R.id.titulo);
-//        separamos los datos para mostrar diferentes
-        String[] parts = qr.split(":");
-        //1|PARADA RAVELO|ALTO|-19.0258807|-65.2782766    Esa es la cadena que muestra un código QR
-        String idUbicacion = parts[0];
-        String lugar = parts[1];
-        String estado = parts[2];
-        String ejeX = parts[3];
-        String ejeY = parts[4];
+        String idUsuario = datoQR.getString("idUsuario");
+        String idUbicacion = datoQR.getString("idUbicacion");
+        String lugar = datoQR.getString("lugar");
+        String estado = datoQR.getString("estado");
+        String ejeX = datoQR.getString("ejeX");
+        String ejeY = datoQR.getString("ejeY");
         String servidor = "https://covid-qr.tk/php/controlador/ControladorUbicacionUsuario.php";
         String servidorLocal = "https://192.168.1.2:8080/covid-qr/php/controlador/ControladorUbicacionUsuario.php";
         insertarUbicacionUsuario(servidor,idUbicacion,idUsuario);
+        Ubicacion u = new Ubicacion(Integer.parseInt(idUbicacion), lugar, "", estado, ejeX, ejeY, "1");
+        getGravedad(servidor, u);
 
         final String ubicar = "https://www.google.com/maps/@" + ejeX + "," + ejeY +",18z";
         ubicacion = findViewById(R.id.ubicaciones);
@@ -82,7 +80,6 @@ public class contenido extends AppCompatActivity {
             }
         });
         titulo.setText("Estado de riesgo en " + lugar + ": ");
-        dato.setText("Gravedad : " + estado);
     }
 
     private void insertarUbicacionUsuario(String url, final String idUbicacion, final String idUsuario){
@@ -92,7 +89,7 @@ public class contenido extends AppCompatActivity {
                 if(response.equals("OK"))
                     Toast.makeText(getApplicationContext(),"QR REGISTRADO EXITOSAMENTE",Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(getApplicationContext(),"HUBO UN ERROR, VUELVA A ESCANEAR",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"HUBO UN ERROR, VUELVA A ESCANEAR\n" + response,Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -106,6 +103,33 @@ public class contenido extends AppCompatActivity {
                 parametros.put("request","insertar");
                 parametros.put("idUsuario", idUsuario);
                 parametros.put("idUbicacion",idUbicacion);
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void getGravedad(String url, final Ubicacion ubicacion){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                dato.setText("Gravedad : " + response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("request","getGravedad");
+                parametros.put("idUbicacion", "" + ubicacion.getIdUbicacion());
+                parametros.put("ejeX",ubicacion.getEjeX());
+                parametros.put("ejeY",ubicacion.getEjeY());
                 return parametros;
             }
         };

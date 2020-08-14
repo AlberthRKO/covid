@@ -180,8 +180,19 @@ public class qr extends AppCompatActivity {
         //        recibimos el dato
                 String idUsuario = get.getString("idUsuario");
                 Intent intent = new Intent(qr.this,contenido.class);
-                intent.putExtra("CodigoQR", result.getContents());
+                String[] parts = result.getContents().split(":");
+                //1|PARADA RAVELO|ALTO|-19.0258807|-65.2782766    Esa es la cadena que muestra un código QR
+                String idUbicacion = parts[0];
+                String lugar = parts[1];
+                String estado = parts[2];
+                String ejeX = parts[3];
+                String ejeY = parts[4];
                 intent.putExtra("idUsuario", idUsuario);
+                intent.putExtra("idUbicacion", idUbicacion);
+                intent.putExtra("lugar", lugar);
+                intent.putExtra("estado", estado);
+                intent.putExtra("ejeX", ejeX);
+                intent.putExtra("ejeY", ejeY);
                 startActivity(intent);
             }else {
                 Toast.makeText(qr.this,"Cancelaste el Escaneo", Toast.LENGTH_LONG).show();
