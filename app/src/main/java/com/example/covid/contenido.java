@@ -74,12 +74,50 @@ public class contenido extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse(ubicar);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                /*Uri uri = Uri.parse(ubicar);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);*/
+                String servidor = "https://covid-qr.tk/php/controlador/ControladorUsuario.php";
+                Bundle datoQR = getIntent().getExtras();
+                String ejeX = datoQR.getString("ejeX");
+                String ejeY = datoQR.getString("ejeY");
+                getTodosUsuariosConfirmadosCercanosQR(servidor,ejeX,ejeY);
             }
         });
         titulo.setText("Estado de riesgo en " + lugar + ": ");
+    }
+
+    private void getTodosUsuariosConfirmadosCercanosQR(String url, final String ejeX, final String ejeY){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response == "empty")
+                    Toast.makeText(getApplicationContext(),"NO EXISTEN CASOS POR LA ZONA",Toast.LENGTH_LONG).show();
+                else{
+                    Intent intent = new Intent(contenido.this,MapaInfeccion.class);
+                    intent.putExtra("usuarios",response);
+                    intent.putExtra("ejeX",ejeX);
+                    intent.putExtra("ejeY",ejeY);
+                    startActivity(intent);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("request","getTodosUsuariosConfirmadosCercanosQR");
+                parametros.put("ejeX",ejeX);
+                parametros.put("ejeY",ejeY);
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
     private void insertarUbicacionUsuario(String url, final String idUbicacion, final String idUsuario){

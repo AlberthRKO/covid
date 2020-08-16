@@ -2,25 +2,14 @@ package com.example.covid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -28,46 +17,48 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class mapaHospitales extends AppCompatActivity implements OnMapReadyCallback {
-
+public class MapaInfeccion extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap gMap;
     private SupportMapFragment mapFragmentHospitales;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa_hospitales);
-
+        setContentView(R.layout.activity_mapa_infeccion);
 
         mapFragmentHospitales = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapaHospitales);
         mapFragmentHospitales.getMapAsync(this);
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
         gMap.setMapType(gMap.MAP_TYPE_NORMAL);
         Bundle get = getIntent().getExtras();
-        String hospitales = get.getString("hospitales");
+        String usuarios = get.getString("usuarios");
+        String ejeX = get.getString("ejeX");
+        String ejeY = get.getString("ejeY");
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<Hospital>>(){}.getType();
-        List<Hospital> hospitalList = gson.fromJson(hospitales, listType);
-        for(Hospital hospital: hospitalList) {
-            LatLng ubi = new LatLng(Float.parseFloat(hospital.getEjeX()), Float.parseFloat(hospital.getEjeY()));
-            gMap.addMarker(new MarkerOptions()
-                    .position(ubi)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacionhospital))
-                    .title(hospital.getNombre()));
+        Type listType = new TypeToken<List<Usuario>>(){}.getType();
+        List<Usuario> usuarioList = gson.fromJson(usuarios, listType);
+        for(Usuario usuario: usuarioList) {
+            LatLng ubi = new LatLng(Float.parseFloat(usuario.getEjeX()), Float.parseFloat(usuario.getEjeY()));
+            gMap.addCircle(new CircleOptions()
+                    .center(ubi)
+                    .radius(55)
+                    .strokeColor(Color.RED)
+                    .strokeWidth(4)
+                    .fillColor(Color.rgb(150,50,50))
+            );
         }
-        LatLng sydney = new LatLng(-19.0384737, -65.2563851);
+        LatLng sydney = new LatLng(Float.parseFloat(ejeX), Float.parseFloat(ejeY));
         gMap.getUiSettings().setZoomControlsEnabled(true);
-        gMap.setMinZoomPreference(13f);
+        gMap.setMinZoomPreference(16f);
         gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
 
 
 }
