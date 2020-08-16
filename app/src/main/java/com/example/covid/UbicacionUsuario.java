@@ -2,15 +2,15 @@ package com.example.covid;
 
 public class UbicacionUsuario {
     private int idUbicacionUsuario;
+    private String nombre;
     private String fecha;
-    private String activo;
     private int idUsuario;
     private int idUbicacion;
 
-    public UbicacionUsuario(int idUbicacionUsuario, String fecha, String activo, int idUsuario, int idUbicacion) {
+    public UbicacionUsuario(int idUbicacionUsuario, String zona, String fecha, int idUsuario, int idUbicacion) {
         this.idUbicacionUsuario = idUbicacionUsuario;
+        this.nombre = nombre;
         this.fecha = fecha;
-        this.activo = activo;
         this.idUsuario = idUsuario;
         this.idUbicacion = idUbicacion;
     }
@@ -23,20 +23,20 @@ public class UbicacionUsuario {
         this.idUbicacionUsuario = idUbicacionUsuario;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getFecha() {
         return fecha;
     }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public String getActivo() {
-        return activo;
-    }
-
-    public void setActivo(String activo) {
-        this.activo = activo;
     }
 
     public int getIdUsuario() {

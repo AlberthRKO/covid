@@ -52,7 +52,11 @@ public class qr extends AppCompatActivity {
         listarQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle get = getIntent().getExtras();
+                //        recibimos el dato
+                String idUsuario = get.getString("idUsuario");
                 Intent i = new Intent(qr.this,listaQr.class);
+                i.putExtra("idUsuario", idUsuario);
                 startActivity(i);
             }
         });
