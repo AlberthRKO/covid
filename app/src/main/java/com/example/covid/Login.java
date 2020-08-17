@@ -2,7 +2,9 @@ package com.example.covid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +47,8 @@ public class Login extends AppCompatActivity {
         ci = (EditText) findViewById(R.id.txtBoxCi);
         contrasena = (EditText) findViewById(R.id.txtBoxContrasena);
         btnIniciar = (Button)findViewById(R.id.btnIniciar);
+
+        cargarPreferencias();
         progressBar = findViewById(R.id.progreso);
 
         progressBar.setVisibility(View.INVISIBLE);
@@ -54,6 +58,7 @@ public class Login extends AppCompatActivity {
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         extensiones.setAdapter(myAdapter);
+
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +74,27 @@ public class Login extends AppCompatActivity {
 
         onAndrea();
     }
+
+    private void guardarPreferencias(Usuario usuario){
+        SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        String idUsuario = "" + usuario.getIdUsuario();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("idUsuario",idUsuario);
+        editor.commit();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        String idUsuario = preferences.getString("idUsuario","empty");
+
+        if(!idUsuario.equals("empty")){
+            Intent intent = new Intent(getApplicationContext(),qr.class);
+            intent.putExtra("idUsuario", "" + idUsuario);
+            startActivity(intent);
+        }
+
+    }
+
     private void validarUsuario(String url){
 
         progressBar.setVisibility(View.VISIBLE);
@@ -84,6 +110,7 @@ public class Login extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),qr.class);
                     Gson gson = new Gson();
                     Usuario usuario = gson.fromJson(response, Usuario.class);
+                    guardarPreferencias(usuario);
                     intent.putExtra("idUsuario", "" + usuario.getIdUsuario());
                     startActivity(intent);
                 }
@@ -101,7 +128,6 @@ public class Login extends AppCompatActivity {
                 parametros.put("ci", ci.getText().toString()+extensiones.getSelectedItem().toString());
                 parametros.put("contrasena",contrasena.getText().toString());
                 return parametros;
-
             }
 
         };
