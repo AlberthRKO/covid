@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/nombre"
-                android:layout_width="128dp"
+                android:layout_width="195dp"
                 android:layout_height="33dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="-20dp"
@@ -44,6 +44,20 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+
+            <Button
+                android:id="@+id/cerrarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Salir "
+                android:background="@drawable/round2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/title_color"
+                android:drawableEnd="@drawable/ic_salir"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -53,139 +67,45 @@
 
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="130dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 app:cardElevation="10dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/conf"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/infected" />
+                    android:layout_gravity="center"
+                    android:padding="15dp">
 
                     <TextView
-                        android:id="@+id/Nconfirmados"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="39297"
+                        android:text=" VE EL NIVEL DE INFECCION DE "
+                        android:textStyle="bold"
+                        android:fontFamily="@font/kaushan_script"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CORONAVIRUS"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/kaushan_script"
                         android:textColor="@color/colorAccent"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
+                        android:textSize="20dp"/>
                     <TextView
-                        android:id="@+id/confirmados"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/Nconfirmados"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="Confirmados"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                        android:text=" EN LA ZONA "
+                        android:textStyle="bold"
+                        android:fontFamily="@font/kaushan_script"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"/>
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/rec"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/recuperados" />
-
-                    <TextView
-                        android:id="@+id/Nrecuperados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="11667"
-                        android:textColor="#28A745"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/recuperados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Nrecuperados"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="Recuperados"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/mue"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/deaths" />
-
-                    <TextView
-                        android:id="@+id/Nmuertos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="1434"
-                        android:textColor="#DC3545"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/muertos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Nmuertos"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/poppins"
-                        android:text="Muertos"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="12sp" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -213,6 +133,8 @@
                     android:fontFamily="@font/poppins"
                     android:text="Estado Covid en la Zona"
                     android:textAlignment="center"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20dp"
                     android:textStyle="bold"

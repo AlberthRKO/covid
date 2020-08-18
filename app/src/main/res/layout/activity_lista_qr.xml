@@ -37,7 +37,7 @@
 
                 <TextView
                     android:id="@+id/nombre"
-                    android:layout_width="128dp"
+                    android:layout_width="195dp"
                     android:layout_height="33dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="-20dp"
@@ -48,6 +48,20 @@
                     android:textColor="@color/title_color"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/cerrarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Salir "
+                    android:background="@drawable/round2"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@color/title_color"
+                    android:drawableEnd="@drawable/ic_salir"/>
 
             </LinearLayout>
 

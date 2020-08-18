@@ -29,19 +29,19 @@ public class contenido extends AppCompatActivity {
     TextView dato;
     Button ubicacion;
     TextView titulo;
-    ImageView confir, recu, muer;
+//    ImageView confir, recu, muer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contenido);
         recibirQr();
-        confir = (ImageView) findViewById(R.id.conf);
-        recu = (ImageView) findViewById(R.id.rec);
-        muer = (ImageView) findViewById(R.id.mue);
-        rotarImagen(confir);
-        rotarImagen(recu);
-        rotarImagen(muer);
+//        confir = (ImageView) findViewById(R.id.conf);
+//        recu = (ImageView) findViewById(R.id.rec);
+//        muer = (ImageView) findViewById(R.id.mue);
+//        rotarImagen(confir);
+//        rotarImagen(recu);
+//        rotarImagen(muer);
 
 
 
@@ -176,15 +176,15 @@ public class contenido extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void rotarImagen(View view){
-        RotateAnimation animation = new RotateAnimation(0, 360,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-
-        animation.setDuration(10000);
-        animation.setRepeatCount(Animation.INFINITE);
-//        animation.setRepeatMode(Animation.REVERSE);
-        view.startAnimation(animation);
-    }
+//    private void rotarImagen(View view){
+//        RotateAnimation animation = new RotateAnimation(0, 360,
+//                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+//                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+//
+//        animation.setDuration(10000);
+//        animation.setRepeatCount(Animation.INFINITE);
+////        animation.setRepeatMode(Animation.REVERSE);
+//        view.startAnimation(animation);
+//    }
 
 }

@@ -27,7 +27,7 @@ public class MapaInfeccion extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_infeccion);
 
-        mapFragmentHospitales = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapaHospitales);
+        mapFragmentHospitales = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapaInfeccion);
         mapFragmentHospitales.getMapAsync(this);
     }
 
