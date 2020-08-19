@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -53,7 +55,21 @@ public class listaQr extends AppCompatActivity {
                     Type listType = new TypeToken<List<UbicacionUsuario>>(){}.getType();
                     List<UbicacionUsuario> ubicacionUsuarioList = gson.fromJson(response, listType);
                     TableLayout listaQRs = findViewById(R.id.listaQRs);
-                    TextView textView;
+                    for(int i=1; i<ubicacionUsuarioList.size(); i++){
+                        if(i==20)
+                            break;
+                        TableRow tableRow = (TableRow) listaQRs.getChildAt(i + 0);
+                        if(i%2==0)//Puedes quitar este If si no te gustan los plomos
+                            tableRow.setBackgroundColor(Color.GRAY);
+                        String []fecha = ubicacionUsuarioList.get(i).getFecha().split(" ");
+                        TextView v1 = (TextView)tableRow.getChildAt(0);
+                        TextView v2 = (TextView)tableRow.getChildAt(1);
+                        TextView v3 = (TextView)tableRow.getChildAt(2);
+                        v1.setText(ubicacionUsuarioList.get(i).getNombre());
+                        v2.setText(fecha[0]);
+                        v3.setText(fecha[1]);
+                    }
+                    /*TextView textView;
                     for(UbicacionUsuario ubicacionUsuario : ubicacionUsuarioList){
                         String []fecha = ubicacionUsuario.getFecha().split(" ");
                         TableRow row = new TableRow(getBaseContext());
@@ -82,7 +98,7 @@ public class listaQr extends AppCompatActivity {
                         textView.setText(fecha[1]);
                         row.addView(textView);
                         listaQRs.addView(row);
-                    }
+                    }*/
                 }
             }
         }, new Response.ErrorListener() {

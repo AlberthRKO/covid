@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +36,7 @@ import java.util.Map;
 
 public class qr extends AppCompatActivity {
 
-    Button btnScanner, btnUbiQr,paginaWeb, listarQR, btnUbiHospitales;
+    Button btnScanner, btnUbiQr,paginaWeb, listarQR, btnUbiHospitales, btnCerrar;
     TextView resp;
 //    ImageView confir, recup, muer;
 
@@ -48,6 +50,14 @@ public class qr extends AppCompatActivity {
         paginaWeb = findViewById(R.id.pagina);
         listarQR = findViewById(R.id.listaQR);
         btnUbiHospitales = findViewById(R.id.ubiHospitales);
+        btnCerrar = findViewById(R.id.cerrarSesion);
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cerrarSesion();
+            }
+        });
 
         listarQR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +109,15 @@ public class qr extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void cerrarSesion(){
+        SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("idUsuario","empty");
+        editor.commit();
+        Intent intent = new Intent(qr.this,Login.class);
+        startActivity(intent);
     }
 
     private void setUbicaciones(String url){
