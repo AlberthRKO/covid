@@ -55,10 +55,10 @@ public class listaQr extends AppCompatActivity {
                     Type listType = new TypeToken<List<UbicacionUsuario>>(){}.getType();
                     List<UbicacionUsuario> ubicacionUsuarioList = gson.fromJson(response, listType);
                     TableLayout listaQRs = findViewById(R.id.listaQRs);
-                    for(int i=1; i<ubicacionUsuarioList.size(); i++){
+                    for(int i=0; i<ubicacionUsuarioList.size(); i++){
                         if(i==20)
                             break;
-                        TableRow tableRow = (TableRow) listaQRs.getChildAt(i + 0);
+                        TableRow tableRow = (TableRow) listaQRs.getChildAt(i + 1);
                         if(i%2==0)//Puedes quitar este If si no te gustan los plomos
                             tableRow.setBackgroundColor(Color.GRAY);
                         String []fecha = ubicacionUsuarioList.get(i).getFecha().split(" ");
