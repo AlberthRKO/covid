@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapaInfeccion extends AppCompatActivity implements OnMapReadyCallback {
@@ -41,22 +42,33 @@ public class MapaInfeccion extends AppCompatActivity implements OnMapReadyCallba
         String ejeX = get.getString("ejeX");
         String ejeY = get.getString("ejeY");
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<Usuario>>(){}.getType();
-        List<Usuario> usuarioList = gson.fromJson(usuarios, listType);
-        for(Usuario usuario: usuarioList) {
-            LatLng ubi = new LatLng(Float.parseFloat(usuario.getEjeX()), Float.parseFloat(usuario.getEjeY()));
-            gMap.addCircle(new CircleOptions()
-                    .center(ubi)
-                    .radius(55)
-                    .strokeColor(Color.RED)
-                    .strokeWidth(4)
-                    .fillColor(Color.rgb(150,50,50))
-            );
+        Type listType = new TypeToken<List<Usuario>>() {
+        }.getType();
+        List<Usuario> usuarioList;
+        if(!usuarios.equals("empty")) {
+            usuarioList = gson.fromJson(usuarios, listType);
+            for (Usuario usuario : usuarioList) {
+                LatLng ubi = new LatLng(Float.parseFloat(usuario.getEjeX()), Float.parseFloat(usuario.getEjeY()));
+                gMap.addCircle(new CircleOptions()
+                        .center(ubi)
+                        .radius(30)
+                        .strokeColor(Color.RED)
+                        .strokeWidth(4)
+                        .fillColor(Color.rgb(150, 50, 50))
+                );
+            }
         }
+        else
+            usuarioList = new ArrayList<Usuario>();
         LatLng sydney = new LatLng(Float.parseFloat(ejeX), Float.parseFloat(ejeY));
         gMap.getUiSettings().setZoomControlsEnabled(true);
         gMap.setMinZoomPreference(16f);
         gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng ubi = new LatLng(Float.parseFloat(ejeX), Float.parseFloat(ejeY));
+        gMap.addMarker(new MarkerOptions().position(ubi)
+                .position(ubi)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ubicacionqr))
+                .title("Casos cercanos: " + usuarioList.size()));
     }
 
 
