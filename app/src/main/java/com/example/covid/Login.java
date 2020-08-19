@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),qr.class);
             intent.putExtra("idUsuario", "" + idUsuario);
             startActivity(intent);
+            finish();
         }
 
     }
@@ -113,6 +114,7 @@ public class Login extends AppCompatActivity {
                     guardarPreferencias(usuario);
                     intent.putExtra("idUsuario", "" + usuario.getIdUsuario());
                     startActivity(intent);
+                    finish();
                 }
             }
         }, new Response.ErrorListener() {
