@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapaInfeccion"></activity>
+        <activity android:name=".DiagnosticResult"></activity>
+        <activity android:name=".Diagnostic" />
+        <activity android:name=".MapaInfeccion" />
         <activity android:name=".mapaHospitales" />
         <activity android:name=".listaQr" />
         <activity android:name=".MapaQR" />

@@ -14,4 +14,10 @@
         <item>BE.</item>
     </string-array>
 
+    <string-array name="information">
+        <item>Contacto Con Persona Positiva Al Test Covid-19</item>
+        <item>Estuvo De Viaje En El Extranjero</item>
+        <item>Otros</item>
+    </string-array>
+
 </resources>

@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class qr extends AppCompatActivity {
 
-    Button btnScanner, btnUbiQr,paginaWeb, listarQR, btnUbiHospitales, btnCerrar;
+    Button btnScanner, btnUbiQr,paginaWeb, listarQR, btnUbiHospitales, btnDiagnostic, btnCerrar;
     TextView resp;
 //    ImageView confir, recup, muer;
 
@@ -50,6 +50,7 @@ public class qr extends AppCompatActivity {
         paginaWeb = findViewById(R.id.pagina);
         listarQR = findViewById(R.id.listaQR);
         btnUbiHospitales = findViewById(R.id.ubiHospitales);
+        btnDiagnostic = findViewById(R.id.diagnostic);
         btnCerrar = findViewById(R.id.cerrarSesion);
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,17 @@ public class qr extends AppCompatActivity {
             public void onClick(View view) {
                 String urlHosting = "https://covid-qr.tk/php/controlador/ControladorUbicacion.php";
                 setUbicaciones(urlHosting);
+            }
+        });
+
+        btnDiagnostic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle get = getIntent().getExtras();
+                String idUsuario = get.getString("idUsuario");
+                Intent intent = new Intent(qr.this,Diagnostic.class);
+                intent.putExtra("idUsuario",idUsuario);
+                startActivity(intent);
             }
         });
 
